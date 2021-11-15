@@ -30,7 +30,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _index = 0;
-  List<Step> steps = [
+  final List<Step> _steps = [
     const Step(
         title: Text('Palier 1'),
         content: Text('Ceci est le contenu du Stepper 1')),
@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementStepper() {
     setState(() {
-      if ((_index >= 0) && (_index < steps.length - 1)) {
+      if ((_index >= 0) && (_index < _steps.length - 1)) {
         _index++;
       }
     });
@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _decrementStepper() {
     setState(() {
-      if (_index > 0 && _index < steps.length) {
+      if (_index > 0 && _index < _steps.length) {
         _index--;
       }
     });
@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'Stepper',
             ),
             Stepper(
-              steps: steps,
+              steps: _steps,
               onStepContinue: _incrementStepper,
               onStepCancel: _decrementStepper,
               currentStep: _index,
